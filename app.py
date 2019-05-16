@@ -6,4 +6,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "hello world"
+    return render_template("index.html")
+
+@app.route('/add-todo', methods=['POST'])
+def addTodo():
+    data = json.loads(request.data) #Load JSON data from request
+    return jsonify(data)
